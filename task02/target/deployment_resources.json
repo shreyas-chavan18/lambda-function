@@ -1,7 +1,7 @@
 {
   "hello_world" : {
     "name" : "hello_world",
-    "lambda_path" : "C:\\Users\\chavanshreyas_santos\\Desktop\\AWS tasks\\lambda-function\\task02",
+    "lambda_path" : "C:\\Users\\chavanshreyas_santos\\Desktop\\AWS tasks\\task02",
     "version" : "1.0.0",
     "func_name" : "com.task02.HelloWorld",
     "deployment_package" : "task02-1.0.0.jar",

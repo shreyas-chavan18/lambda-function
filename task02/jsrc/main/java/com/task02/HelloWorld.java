@@ -1,4 +1,3 @@
-
 package com.task02;
 
 import com.amazonaws.services.lambda.runtime.Context;
@@ -18,24 +17,25 @@ import java.util.Map;
 )
 public class HelloWorld implements RequestHandler<Map<String, Object>, Map<String, Object>> {
 
+    @Override
     public Map<String, Object> handleRequest(Map<String, Object> request, Context context) {
-        Map<String, Object> resultMap = new HashMap<>();
-        
-        // Extract path and method from the request
-        String path = (String) request.getOrDefault("path", "");
-        String method = (String) request.getOrDefault("httpMethod", "");
+        // Extract path and method from the request object
+        String path = (String) request.get("path");
+        String method = (String) request.get("httpMethod");
 
+        Map<String, Object> responseMap = new HashMap<>();
+
+        // Check if the request path is /hello and the HTTP method is GET
         if ("/hello".equals(path) && "GET".equalsIgnoreCase(method)) {
-            // Valid request to /hello with GET method
-            resultMap.put("statusCode", 200);
-            resultMap.put("message", "Hello from Lambda");
+            responseMap.put("statusCode", 200);
+            responseMap.put("body", "{\"message\": \"Hello from Lambda\"}");
         } else {
-            // Any other path or method - return 400 error
-            resultMap.put("statusCode", 400);
-            resultMap.put("message", String.format("Bad request syntax or unsupported method. Request path: %s. HTTP method: %s", path, method));
+            // Handle other paths or methods with a 400 response
+            responseMap.put("statusCode", 400);
+            responseMap.put("body", String.format(
+                "{\"message\": \"Bad request syntax or unsupported method. Request path: %s. HTTP method: %s\"}", path, method
+            ));
         }
-        
-        return resultMap;
+        return responseMap;
     }
 }
-
