@@ -4,18 +4,6 @@
       "Statement": [
     {
         "Action": [
-            "lambda:InvokeFunctionUrl"
-        ],
-        "Effect": "Allow",
-        "Resource": "arn:aws:lambda:eu-central-1:196241772369:function:hello_world",
-        "Condition": {
-            "StringEquals": {
-                "lambda:FunctionUrlAuthType": "NONE"
-            }
-        }
-    },
-    {
-        "Action": [
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
@@ -29,7 +17,12 @@
             "kms:Decrypt"
         ],
         "Effect": "Allow",
-        "Resource": "*"
+        "Resource": ["*", "arn:aws:lambda:eu-central-1:196241772369:function:hello_world"],
+        "Condition": {
+            "StringEquals": {
+                "lambda:FunctionUrlAuthType": "NONE"
+            }
+        }
     }
 ]
 ,
