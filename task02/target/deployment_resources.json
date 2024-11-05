@@ -1,7 +1,7 @@
 {
   "hello_world" : {
     "name" : "hello_world",
-    "lambda_path" : "C:\\Users\\chavanshreyas_santos\\Desktop\\AWS tasks\\task02",
+    "lambda_path" : "C:\\Users\\hrishikeshsukhdeo_da\\Desktop\\AwsTask2\\task02",
     "version" : "1.0.0",
     "func_name" : "com.task02.HelloWorld",
     "deployment_package" : "task02-1.0.0.jar",
@@ -18,8 +18,12 @@
     "env_variables" : { },
     "tags" : { },
     "publish_version" : true,
-    "alias" : "${lambdas_alias_name}",
+    "alias" : "learn",
     "logs_expiration" : "${logs_expiration}",
-    "snap_start" : "None"
+    "snap_start" : "None",
+    "url_config" : {
+      "auth_type" : "NONE",
+      "invoke_mode" : "BUFFERED"
+    }
   }
 }

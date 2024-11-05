@@ -2,8 +2,8 @@
   "lambda-basic-execution": {
     "policy_content": {
       "Statement": [
-    {
-        "Action": [
+        {
+          "Action": [
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
@@ -15,17 +15,11 @@
             "ssm:PutParameter",
             "ssm:GetParameter",
             "kms:Decrypt"
-        ],
-        "Effect": "Allow",
-        "Resource": ["*", "arn:aws:lambda:eu-central-1:196241772369:function:hello_world"],
-        "Condition": {
-            "StringEquals": {
-                "lambda:FunctionUrlAuthType": "NONE"
-            }
+          ],
+          "Effect": "Allow",
+          "Resource": "*"
         }
-    }
-]
-,
+      ],
       "Version": "2012-10-17"
     },
     "resource_type": "iam_policy",
