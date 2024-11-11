@@ -7,7 +7,14 @@
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents",
-            "sns:Publish"
+            "dynamodb:GetItem",
+            "dynamodb:Query",
+            "dynamodb:PutItem",
+            "dynamodb:Batch*",
+            "dynamodb:DeleteItem",
+            "ssm:PutParameter",
+            "ssm:GetParameter",
+            "kms:Decrypt"
           ],
           "Effect": "Allow",
           "Resource": "*"
@@ -16,6 +23,15 @@
       "Version": "2012-10-17"
     },
     "resource_type": "iam_policy",
+    "tags": {}
+  },
+  "sqs_handler-role": {
+    "predefined_policies": ["AWSLambdaSQSQueueExecutionRole"],
+    "principal_service": "lambda",
+    "custom_policies": [
+      "lambda-basic-execution"
+    ],
+    "resource_type": "iam_role",
     "tags": {}
   },
   "async_queue": {
@@ -30,6 +46,15 @@
     "policy": {},
     "redrive_policy": {},
     "content_based_deduplication": false,
+    "tags": {}
+  },
+  "sns_handler-role": {
+    "predefined_policies": ["AWSLambdaSQSQueueExecutionRole"],
+    "principal_service": "lambda",
+    "custom_policies": [
+      "lambda-basic-execution"
+    ],
+    "resource_type": "iam_role",
     "tags": {}
   },
   "lambda_topic": {
