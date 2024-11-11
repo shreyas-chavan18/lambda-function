@@ -25,15 +25,6 @@
     "resource_type": "iam_policy",
     "tags": {}
   },
-  "sqs_handler-role": {
-    "predefined_policies": ["AWSLambdaSQSQueueExecutionRole"],
-    "principal_service": "lambda",
-    "custom_policies": [
-      "lambda-basic-execution"
-    ],
-    "resource_type": "iam_role",
-    "tags": {}
-  },
   "async_queue": {
     "resource_type": "sqs_queue",
     "fifo_queue": false,
@@ -46,15 +37,6 @@
     "policy": {},
     "redrive_policy": {},
     "content_based_deduplication": false,
-    "tags": {}
-  },
-  "sns_handler-role": {
-    "predefined_policies": ["AWSLambdaSQSQueueExecutionRole"],
-    "principal_service": "lambda",
-    "custom_policies": [
-      "lambda-basic-execution"
-    ],
-    "resource_type": "iam_role",
     "tags": {}
   },
   "lambda_topic": {
