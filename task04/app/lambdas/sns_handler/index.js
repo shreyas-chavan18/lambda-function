@@ -1,13 +1,20 @@
-exports.handler = async (event) => {
-    // Loop through each record (SNS message) in the event
-    for (const record of event.Records) {
-        // Log the SNS message content to CloudWatch Logs
-        console.log('Received SNS message:', record.Sns.Message);
-    }
+// Import AWS SDK (not required for basic Lambda functions but useful if integrating with other AWS services)
+const AWS = require('aws-sdk');
 
-    const response = {
+// Export the handler function
+exports.handler = async (event, context) => {
+    // Log the incoming event
+    console.log("Event received:", JSON.stringify(event, null, 2));
+
+    // Implement the Lambda functionality
+    console.log("Hello from lambda");
+
+    // Create a response
+    const resultMap = {
         statusCode: 200,
-        body: JSON.stringify('SNS message processed successfully!'),
+        body: "Hello from Lambda"
     };
-    return response;
+
+    // Return the response
+    return resultMap;
 };

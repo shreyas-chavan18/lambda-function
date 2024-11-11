@@ -1,13 +1,21 @@
-exports.handler = async (event) => {
-    // Loop through each record (message) in the SQS event
-    for (const record of event.Records) {
-        // Log the message body to CloudWatch
-        console.log('Received message:', record.body);
-    }
+// Import AWS SDK (not required for basic Lambda functions but useful if interacting with other AWS services)
+const AWS = require('aws-sdk');
 
-    const response = {
+// Export the handler function
+exports.handler = async (event, context) => {
+    // Log each record in the event
+    event.Records.forEach(record => {
+        console.log("SQS Message:", JSON.stringify(record.body));
+    });
+
+    console.log("Hello from lambda");
+
+    // Create a response
+    const result = {
         statusCode: 200,
-        body: 'Processed SQS messages',
+        body: "Hello from Lambda"
     };
-    return response;
+
+    // Return the response
+    return result;
 };
